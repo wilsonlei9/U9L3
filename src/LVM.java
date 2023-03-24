@@ -2,21 +2,22 @@ import java.util.UUID;
 
 public class LVM {
     private String name;
-    private int size;
     private UUID u;
 
-    public LVM(String n, int s, UUID id)
+    public LVM(String n)
     {
         name = n;
-        size = s;
-        id = UUID.randomUUID();
-        u = id;
+        u = UUID.randomUUID();
     }
 
-    public void generate()
+    public LVM()
     {
-        System.out.println(u.toString());
+
     }
-
-
+    public String getName() {
+        return name;
+    }
+    public UUID getU() {
+        return u;
+    }
 }

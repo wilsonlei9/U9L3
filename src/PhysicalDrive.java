@@ -1,13 +1,19 @@
 import java.util.UUID;
-
 public class PhysicalDrive extends LVM{
-    public PhysicalDrive(String n, int s, UUID id)
+    private int size;
+    public PhysicalDrive(String n, int s)
     {
-        super(n, s, id);
+        super(n);
+        size = s;
     }
 
-    public void getSize()
+    public PhysicalDrive() {
+
+    }
+
+    public int getSize()
     {
         return size;
     }
+
 }

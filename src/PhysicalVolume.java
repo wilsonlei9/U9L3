@@ -1,8 +1,13 @@
+import java.util.ArrayList;
 public class PhysicalVolume extends PhysicalDrive {
-    private String name;
-    public PhysicalVolume(String n, PhysicalDrive p, int size,)
+    ArrayList<PhysicalVolume> list = new ArrayList<PhysicalVolume>();
+    public PhysicalVolume(String n, int s)
     {
-        name =  n;
+        super(n, s);
+        list.add(this);
+    }
+
+    public PhysicalVolume() {
 
     }
 }
