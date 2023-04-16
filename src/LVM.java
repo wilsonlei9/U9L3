@@ -10,10 +10,6 @@ public class LVM {
         u = UUID.randomUUID();
     }
 
-    public LVM()
-    {
-
-    }
     public String getName() {
         return name;
     }
