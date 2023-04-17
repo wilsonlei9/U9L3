@@ -9,6 +9,8 @@ public class LVMRunner {
         String driveSize = "";
         ArrayList<PhysicalDrive> arr = new ArrayList<PhysicalDrive>();
         ArrayList<PhysicalVolume> pvarr = new ArrayList<PhysicalVolume>();
+        ArrayList<PhysicalVolume> list = new ArrayList<PhysicalVolume>();
+        ArrayList<VolumeGroup> vgList = new ArrayList<VolumeGroup>();
         while (!cmd.equals("exit"))
         {
             System.out.print("cmd#: ");
@@ -46,6 +48,53 @@ public class LVMRunner {
                         System.out.println(pvarr.get(i).getName() + ": " + "[" + driveSize + "] " + pvarr.get(i).getU());
                     }
                 }
+            }
+            if (cmd.contains("vgcreate"))
+            {
+                String name = cmd.substring(9, 12);
+                String pvName = cmd.substring(13, 16);
+                for (int i = 0; i < pvarr.size(); i++)
+                {
+                    if (pvarr.get(i).getName().equals(pvName))
+                    {
+                        list.add(pvarr.get(i));
+                    }
+                }
+                VolumeGroup vg = new VolumeGroup(name, list);
+                vgList.add(vg);
+                System.out.println(name + " created");
+            }
+            if (cmd.contains("vgextend"))
+            {
+                String name = cmd.substring(9, 12);
+                String pvName = cmd.substring(13, 16);
+                for (int i = 0; i < pvarr.size(); i++)
+                {
+                    if (pvarr.get(i).getName().equals(pvName))
+                    {
+                        list.add(pvarr.get(i));
+                    }
+                }
+                VolumeGroup vg = new VolumeGroup(name, list);
+                for (int i = 0; i < vgList.size(); i++)
+                {
+                    if (vgList.get(i).getName().equals(name))
+                    {
+                        vgList.set(i, vg);
+                    }
+                }
+                System.out.println(pvName + " added to " + name);
+            }
+            if (cmd.equals("vglist"))
+            {
+                for (int i = 0; i < vgList.size(); i++)
+                {
+                    System.out.println(vgList.get(i).getName() + ": total: " + "[" + arr.get(i).getSize() + "] " + "available: " + "[" + vgList.get(i).vgSize() + "] " + "[");
+                }
+            }
+            if (cmd.contains("lvcreate"))
+            {
+                String name =
             }
         }
     }
