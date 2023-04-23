@@ -22,6 +22,7 @@ public class LVMRunner {
                 PhysicalDrive drive = new PhysicalDrive(name, size);
                 arr.add(drive);
                 System.out.println("Drive " + name + " installed");
+
             }
             if (cmd.equals("list-drives"))
             {
@@ -91,10 +92,6 @@ public class LVMRunner {
                 {
                     System.out.println(vgList.get(i).getName() + ": total: " + "[" + arr.get(i).getSize() + "] " + "available: " + "[" + vgList.get(i).vgSize() + "] " + "[");
                 }
-            }
-            if (cmd.contains("lvcreate"))
-            {
-                String name =
             }
         }
     }
